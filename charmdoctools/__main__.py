@@ -1,60 +1,21 @@
-import argparse  # pragma: no cover
-
+import click  # pragma: no cover
+import pkgutil  # pragma: no cover
 from . import BaseClass, base_function  # pragma: no cover
 
+v = pkgutil.get_data(__name__, "VERSION")
+__version__ = str(v, "utf-8").strip()  # type: ignore
 
-def main() -> None:  # pragma: no cover
-    """
-    The main function executes on commands:
-    `python -m charmdoctools` and `$ charmdoctools `.
 
-    This is your program's entry point.
-
-    You can change this function to do whatever you want.
-    Examples:
-        * Run a test suite
-        * Run a server
-        * Do some other stuff
-        * Run a command line application (Click, Typer, ArgParse)
-        * List all available tasks
-        * Run an application (Flask, FastAPI, Django, etc.)
-    """
-    parser = argparse.ArgumentParser(
-        description="charmdoctools.",
-        epilog="Enjoy the charmdoctools functionality!",
-    )
-    # This is required positional argument
-    parser.add_argument(
-        "name",
-        type=str,
-        help="The username",
-        default="evilnick",
-    )
-    # This is optional named argument
-    parser.add_argument(
-        "-m",
-        "--message",
-        type=str,
-        help="The Message",
-        default="Hello",
-        required=False,
-    )
-    parser.add_argument(
-        "-v",
-        "--verbose",
-        action="store_true",
-        help="Optionally adds verbosity",
-    )
-    args = parser.parse_args()
-    print(f"{args.message} {args.name}!")
-    if args.verbose:
-        print("Verbose mode is on.")
-
-    print("Executing main function")
+@click.command()
+def main() -> None:
+    """Example script."""
+    click.echo("Hello World!")
+    click.echo("Version is {}".format(__version__))
+    click.echo("Executing main function")
     base = BaseClass()
-    print(base.base_method())
-    print(base_function())
-    print("End of main function")
+    click.echo(base.base_method())
+    click.echo(base_function())
+    click.echo("End of main function")
 
 
 if __name__ == "__main__":  # pragma: no cover
