@@ -2,8 +2,10 @@ import click  # pragma: no cover
 from . import BaseClass, base_function  # pragma: no cover
 import pkgutil
 
-__version__ = str(pkgutil.get_data(__name__, "VERSION").decode("utf-8")).strip()
-
+try:
+    __version__ = str(pkgutil.get_data(__name__, "VERSION"), 'utf-8').strip()
+except:
+    __version__ = "local dev"
 
 @click.command()
 def main() -> None:
