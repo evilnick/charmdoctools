@@ -1,7 +1,7 @@
 import click  # pragma: no cover
 from . import BaseClass, base_function  # pragma: no cover
 import pkgutil
-__version__= pkgutil.get_data(__name__, "VERSION").decode("utf-8").strip()
+__version__= str(pkgutil.get_data(__name__, "VERSION").decode("utf-8")).strip()
 
 @click.command()
 def main() -> None:
