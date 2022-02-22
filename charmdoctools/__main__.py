@@ -2,8 +2,8 @@ import click  # pragma: no cover
 import pkgutil  # pragma: no cover
 from . import BaseClass, base_function  # pragma: no cover
 
-__version__ = str(
-    pkgutil.get_data(__name__, "VERSION"), "utf-8").strip()  # type: ignore
+v = pkgutil.get_data(__name__, "VERSION")
+__version__ = str(v, "utf-8").strip()  # type: ignore
 
 
 @click.command()
