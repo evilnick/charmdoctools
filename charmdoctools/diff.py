@@ -14,3 +14,5 @@ def diff_local_vs_discourse(local_file):
     with open(local_file) as f:
         text = f.readlines()
     metadata = get(text)
+
+
