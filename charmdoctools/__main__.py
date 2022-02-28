@@ -7,6 +7,7 @@ __version__ = str(v, "utf-8").strip()  # type: ignore
 
 
 @click.command()
+@click.pass_context()
 def main() -> None:
     """Example script."""
     click.echo("Hello World!")
