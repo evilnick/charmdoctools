@@ -1,0 +1,3 @@
+test file 2
+This text is just used by tests to check some of the functions
+included in this package
