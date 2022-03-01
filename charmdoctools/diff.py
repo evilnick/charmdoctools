@@ -13,7 +13,7 @@ import difflib
 from charmdoctools.metadata import get, strip, put
 
 
-def source_to_text(src) --> list:
+def source_to_text(src) -> list:
     """Checks supplied string to see if it is a url, local file etc, and return the appropriate text from that location"""
     text = list()
     if os.path.exists(src):
