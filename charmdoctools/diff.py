@@ -28,6 +28,6 @@ def source_to_text(src) -> list:
 def diff_docs(file1, file2):
     text1 = source_to_text(file1)
     text2 = source_to_text(file2)
-    outlines = difflib.unified_diff(file1,file2,fromfile=file1,tofile=file2)
+    outlines = list(difflib.unified_diff(file1,file2,fromfile=file1,tofile=file2))
     return(outlines)
 

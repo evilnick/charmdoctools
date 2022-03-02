@@ -4,11 +4,21 @@ from charmdoctools.diff import diff_docs,source_to_text
 
 
 def test_diff_files():
-    assert diff_docs("test_file_1.txt","test_file_2.txt") == {
-        "charm_name": "etcd",
-        "charm_source": "https://github.com/charmed-kubernetes/layer-etcd",
-        "docs": "https://discourse.charmhub.io/t/charm-etcd-docs-index/5592",
-    }
-    assert get("Text with\nno metadata") == None
+    result =  list(diff_docs("test_file_1.txt","test_file_2.txt"))
+    
+    assert result == [
+        '--- test_file_1.txt\n',
+        '+++ test_file_2.txt\n',
+        '@@ -8,7 +8,7 @@\n',
+        ' l',
+        ' e',
+        ' _',
+        '-1',
+        '+2',
+        ' .',
+        ' t',
+        ' x',
+    ]
+    assert len(result) == 11
 
 
