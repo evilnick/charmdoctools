@@ -1,6 +1,7 @@
 import click  # pragma: no cover
 import pkgutil  # pragma: no cover
 from . import BaseClass, base_function  # pragma: no cover
+from .diff import diff_docs
 
 v = pkgutil.get_data(__name__, "VERSION")
 __version__ = str(v, "utf-8").strip()  # type: ignore
@@ -41,6 +42,10 @@ def diff(ctx,base,comparison,quiet) -> None:
             https://discourse.ubuntu.com/t/some_text/6319/
     
      """
+    result = diff_docs(base,comparison,quiet)
+    if not quiet:
+        click.echo(''.join(result))
+
     exit(0)
 if __name__ == "__main__":  # pragma: no cover
     main(obj={})
